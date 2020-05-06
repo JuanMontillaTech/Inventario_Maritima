@@ -5,7 +5,7 @@ esta creado en .net core MVC, c#.net , implementa API y utiliza base de datos MS
 
 *es importante tener internet ya que utiliza Liberia que están el repositorio CDN 
 
-Utiliza Librería 
+# Utiliza Librería 
 
 1. vuejs : para hacer la web reactiva (interactiva) 
 
@@ -19,7 +19,7 @@ Utiliza Librería
 
 6. toastr: para manejar notificaciones  
 
-*Carpetas: 
+# Carpetas: 
 
 *Source:  
 
