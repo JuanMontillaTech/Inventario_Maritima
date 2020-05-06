@@ -1,0 +1,79 @@
+﻿
+@model MGI_Maritima.Models.Articulo
+
+<br />
+<h2 class="text-info">@(Model.id!=0 ? "Editar" : "Crear") Articulo</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        @if (Model.id != 0)
+        {
+            <input type="hidden" asp-for="id" />
+        }
+        <input type="hidden" name="DataPrecio" id="DataPrecio" />
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="nombre "></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="nombre " class="form-control" />
+                <span asp-validation-for="nombre " class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Descripcion"></label>
+            </div>
+            <div class="col-6">
+                <textarea asp-for="Descripcion" class="form-control" rows="3"> </textarea>
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+
+            <div class="col-3">
+                Precios
+            </div>
+            <div class="col-4">
+                <div id="app">
+
+                    <table class="table">
+                        <thead><tr><td>  <input v-model="addPrecio" type="number" class="form-control" /> </td><th> <span class="btn btn-success" v-on:click="addRow" v-if="addPrecio != 0">+</span></th></tr></thead>
+                        <tbody>
+
+                            <template v-for="(RowPrecios, index) in DataPrecios">
+                                <tr>
+                                    <td>{{RowPrecios.precio}}</td>
+                                    <td><span class="btn btn-danger" v-on:click="removeRow(index)">X</span></td>
+                                </tr>
+                            </template>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <button type="submit" class="btn btn-primary form-control">
+                    @(Model.id != 0 ? "Actualizar" : "Crear")
+                </button>
+            </div>
+            <div class="col-3">
+                <a asp-action="Index" class="btn btn-success form-control">Regresar</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="~/app/MainPrecio.js"></script>
+
+}

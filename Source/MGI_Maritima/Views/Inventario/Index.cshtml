@@ -1,0 +1,99 @@
+﻿
+<div id="app">
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group row">
+                <div class="col-3">
+                    <label> Almacen</label>
+                </div>
+                <div class="col-6">
+
+                    <select v-model="SelectAlmacen" class="form-control">
+                        <option value="" selected="selected">Seleccione un almacen</option>
+                        <option v-for="(Almacenes, index) in DataAlmacen" :value="Almacenes.id">{{ Almacenes.descripcion }}</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label> Articulos</label>
+                </div>
+                <div class="col-6">
+
+                    <select v-model="SelectArticulo" class="form-control">
+                        <option value="" selected="selected">Seleccione un articulo</option>
+                        <option v-for="(Articulos, index) in DataArticulos" :value="Articulos.id">{{ Articulos.nombre }}</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label> Acción</label>
+                </div>
+                <div class="col-6">
+
+                    <select v-model="SelectAccion" class="form-control">
+                        <option value="1" selected="selected">Entrada</option>
+                        <option value="0" selected="selected">Salida</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label> Cantidad</label>
+                </div>
+                <div class="col-6">
+
+                    <input v-model="CantidadInt" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label>  </label>
+                </div>
+                <div class="col-6">
+                    <template v-if="CantidadInt != 0">
+                        <span class="btn btn-success" v-on:click="SetAccion" >Aplicar</span>
+                    </template>
+                    <template v-else>
+                        <span class="btn btn-success"  >Aplicar</span>
+
+                    </template>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <table class="table">
+                <thead> 
+                    <tr>
+                        <td>Ubcación</td>
+                        <td>Articulo</td>
+                        <td>Cantidad</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <template v-for="(RowIventario, index) in DataInventario">
+                        <tr>
+                            <td>{{CallUbicacion(RowIventario.idalmacen)}}</td>
+                            <td>{{CallArticulo(RowIventario.idarticulo)}}</td>
+                            <td>{{RowIventario.cantidad}}</td>
+                        </tr>
+                    </template>
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="~/app/MainInventario.js"></script>
+
+}

@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Reporte";
+}
+
+
+<div id="app">
+    <div class="card">
+        <div class="card-body">
+            <input type="button" id="btnExport" class="btn btn-success" value="Exportar" onclick="Export()" />
+
+            <table id="tblinv" class="table table-striped">
+                <tbody>
+                    <template v-for="(RowInventario, index) in DatoReporte">
+                        <tr>
+                            <td> {{RowInventario.detalle}}</td>
+                        </tr>
+                    </template>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="~/app/MainRpt.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script type="text/javascript">
+        function Export() {
+            html2canvas(document.getElementById('tblinv'), {
+                onrendered: function (canvas) {
+                    var data = canvas.toDataURL();
+                    var docDefinition = {
+                        content: [{
+                            image: data,
+                            width: 500
+                        }]
+                    };
+                    pdfMake.createPdf(docDefinition).download("Table.pdf");
+                }
+            });
+        }
+    </script>
+
+}

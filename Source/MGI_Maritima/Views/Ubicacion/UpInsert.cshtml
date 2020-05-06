@@ -1,0 +1,56 @@
+﻿@model MGI_Maritima.Models.Almacen
+
+<br />
+<h2 class="text-info">@(Model.id!=0 ? "Editar" : "Crear") Almacen</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        @if (Model.id != 0)
+        {
+            <input type="hidden" asp-for="id" />
+        }
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label >Almacen</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="descripcion" class="form-control" />
+                <span asp-validation-for="descripcion" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ubicacion "></label>
+            </div>
+            <div class="col-6">
+                <textarea asp-for="ubicacion" class="form-control" rows="3"></textarea> 
+                <span asp-validation-for="ubicacion " class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Capacidad "></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Capacidad " class="form-control"  />
+                <span asp-validation-for="Capacidad " class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <button type="submit" class="btn btn-primary form-control">
+                    @(Model.id != 0 ? "Actualizar" : "Crear")
+                </button>
+            </div>
+            <div class="col-3">
+                <a asp-action="Index" class="btn btn-success form-control">Regresar</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
