@@ -31,7 +31,7 @@ Proyecto listo para colocarlo en un servidor
 
 *Continuous_Deploy: 
 
-  En esta carpeta se encuentra preparada con un script de nombre PushHeroku para hacer CI/CD a un servidor, es requerido tener instalado git, y una cuenta en el servidor de https://www.heroku.com/ es una plataforma cloud como Amazon, Azure o google, pero modo SAAS   
+  En esta carpeta se encuentra preparada con un script de nombre PushHeroku para hacer CI/CD a un servidor, es requerido tener instalado git, docker y una cuenta en el servidor de https://www.heroku.com/ es una plataforma cloud como Amazon, Azure o google, pero modo SAAS   
 
 *script PushHeroku :  
 
